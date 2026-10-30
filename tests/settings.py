@@ -2,7 +2,7 @@ import os
 
 SECRET_KEY = "tests"
 USE_TZ = True
-TIME_ZONE = "Africa/Casablanca"
+TIME_ZONE = "Asia/Tokyo"  # UTC+9 all year: the calendar tests must not depend on DST rules
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",

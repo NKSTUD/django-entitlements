@@ -153,10 +153,10 @@ class MeteredTests(Base):
 
     def test_calendar_period_follows_the_local_time_zone(self):
         entitlements.subscribe(self.org, "pro")
-        # 23:30 UTC on Oct 31 is already Nov 1 in Casablanca (UTC+1): a new month there.
-        with time_machine.travel(at(2026, 10, 31, 22, 30), tick=False):
+        # 15:30 UTC on Oct 31 is already Nov 1 in Tokyo (UTC+9): a new month there.
+        with time_machine.travel(at(2026, 10, 31, 14, 30), tick=False):
             entitlements.consume(self.org, "ai_minutes", 60)
-        with time_machine.travel(at(2026, 10, 31, 23, 30), tick=False):
+        with time_machine.travel(at(2026, 10, 31, 15, 30), tick=False):
             s = entitlements.status(self.org, "ai_minutes")
             self.assertEqual(s.used, 0)
             self.assertEqual(timezone.localtime(s.period_start).day, 1)
